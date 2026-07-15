@@ -19,6 +19,7 @@
   --fb:'Inter',sans-serif;
 }
 body{font-family:var(--fb);background:var(--bg);color:var(--dark);line-height:1.6;overflow-x:hidden;}
+.page-wrap{max-width:1280px;margin:0 auto;box-shadow:0 0 80px rgba(0,0,0,.1);background:var(--bg);min-height:100vh;}
 nav{position:sticky;top:0;z-index:100;background:rgba(248,248,252,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:var(--fd);font-weight:800;font-size:1.2rem;color:var(--dark);letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none;}
 .logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-size:.9rem;}
@@ -70,13 +71,13 @@ footer strong{color:var(--dark);font-family:var(--fd);font-weight:700;}
 .banner-bg{
   position:absolute;inset:0;
   background:linear-gradient(135deg,#2D0B6B 0%,#6B1E9E 35%,#C2185B 70%,#FF6B35 100%);
-  transition:opacity .3s;
+  z-index:0;
 }
-/* Quando tiver imagem real, adicione: <img class="banner-photo" src="sua-imagem.jpg" alt=""> */
 .banner-photo{
   position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:cover;object-position:center;
+  z-index:1;
 }
 /* Indicador de placeholder (some quando há foto) */
 .banner-placeholder-hint{
@@ -97,33 +98,32 @@ footer strong{color:var(--dark);font-family:var(--fd);font-weight:700;}
   position:absolute;inset:0;
   background:linear-gradient(
     100deg,
-    rgba(10,4,30,.88) 0%,
-    rgba(10,4,30,.72) 40%,
-    rgba(10,4,30,.25) 65%,
-    rgba(10,4,30,.05) 100%
+    rgba(255,255,255,.95) 0%,
+    rgba(255,255,255,.80) 38%,
+    rgba(255,255,255,.30) 60%,
+    rgba(255,255,255,0) 100%
   );
-  z-index:1;
+  z-index:2;
 }
 
 /* Conteúdo sobre o banner */
 .banner-inner{
-  position:relative;z-index:2;
+  position:relative;z-index:3;
   width:100%;max-width:1100px;
   margin:0 auto;
-  padding:3rem 2rem;
-  display:grid;
-  grid-template-columns:1fr 420px;
-  gap:2rem;
-  align-items:center;
+  padding:3.5rem 5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 /* Texto do hero (agora sobre fundo escuro) */
 .hero-badge{
   display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.25);
+  background:white;
+  border:1px solid var(--border);
   border-radius:100px;padding:6px 14px;
-  font-size:.78rem;font-weight:500;color:rgba(255,255,255,.85);
+  font-size:.78rem;font-weight:500;color:var(--muted);
   margin-bottom:1.5rem;
 }
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--mint);animation:blink 2s infinite;}
@@ -133,15 +133,15 @@ h1{
   font-size:clamp(2.4rem,5vw,3.8rem);
   font-weight:800;line-height:1.08;
   letter-spacing:-.03em;margin-bottom:1.25rem;
-  color:white;
+  color:var(--dark);
 }
-.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.72);margin-bottom:1rem;max-width:420px;}
+.hero-sub{font-size:1.05rem;color:var(--muted);margin-bottom:1rem;max-width:420px;}
 .hero-min{
   display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.25);
+  background:rgba(124,58,237,.08);
+  border:1px solid rgba(124,58,237,.2);
   border-radius:100px;padding:6px 14px;
-  font-size:.82rem;font-weight:600;color:rgba(255,255,255,.9);
+  font-size:.82rem;font-weight:600;color:var(--purple);
   margin-bottom:2rem;
 }
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
@@ -156,15 +156,14 @@ h1{
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.65);}
 .btn-ghost{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.12);color:white;
+  background:white;color:var(--dark);
   font-family:var(--fd);font-weight:600;font-size:1rem;
   padding:14px 24px;border-radius:100px;
-  border:1.5px solid rgba(255,255,255,.3);
+  border:1.5px solid var(--border);
   cursor:pointer;text-decoration:none;
-  backdrop-filter:blur(8px);
-  transition:background .2s,border-color .2s;
+  transition:border-color .2s;
 }
-.btn-ghost:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.5);}
+.btn-ghost:hover{border-color:var(--purple);}
 
 /* Cards flutuantes sobre o banner */
 .hero-visual{position:relative;height:380px;}
@@ -222,22 +221,42 @@ h1{
 .rname{font-family:var(--fd);font-weight:600;font-size:.83rem;}
 .rsub{font-size:.72rem;color:var(--muted);}
 @media(max-width:900px){.banner-inner{grid-template-columns:1fr;}.hero-visual{display:none;}.steps{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:600px){.steps{grid-template-columns:1fr;}.reviews-grid{grid-template-columns:1fr;}.cat-grid{grid-template-columns:1fr;}.cta-box{padding:2.5rem 1.5rem;}.tema-banner{flex-direction:column;text-align:center;}}
+@media(max-width:600px){
+  .steps{grid-template-columns:1fr;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:1fr;}
+  .cta-box{padding:2.5rem 1.5rem;}
+  .tema-banner{flex-direction:column;text-align:center;}
+  /* Banner mobile */
+  .hero-banner{min-height:280px;}
+  .banner-photo{object-position:72% center;}
+  .banner-overlay{
+    background:linear-gradient(
+      160deg,
+      rgba(255,255,255,.97) 0%,
+      rgba(255,255,255,.85) 45%,
+      rgba(255,255,255,.4) 70%,
+      rgba(255,255,255,0) 100%
+    );
+  }
+  .banner-inner{padding:2rem 1.5rem;}
+  .hero-badge{font-size:.72rem;padding:5px 12px;}
+  .hero-min{font-size:.75rem;}
+}
 
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <nav>
-  <a href="#" class="logo"><img src="Images/logo-filafavo.jpg" alt="FilaFavo" style="height:40px;width:auto;"></a>
+  <a href="#" class="logo"><img src="Images/logo-filafavo.jpg" alt="FilaFavo" style="height:52px;width:auto;"></a>
 </nav>
 <div class="hero-banner">
 
   <!-- FUNDO: gradiente placeholder. Quando tiver sua arte/foto, adicione abaixo: -->
   <!-- <img class="banner-photo" src="banner.jpg" alt="FilaFavo"> -->
+  <img class="banner-photo" src="Images/banner.png" alt="FilaFavo lembrancinhas 3D">
   <div class="banner-bg"></div>
-
-  <!-- Indicador de placeholder (remova quando colocar a imagem) -->
-  <div class="banner-placeholder-hint">📸 Adicione sua imagem de banner aqui</div>
 
   <!-- Overlay para legibilidade do texto -->
   <div class="banner-overlay"></div>
@@ -246,15 +265,9 @@ h1{
   <div class="banner-inner">
     <div>
       <div class="hero-badge"><span class="badge-dot"></span>Lembrancinhas únicas · Impressão 3D</div>
-      <h1>A lembrancinha que todo mundo vai <span class="grad">querer levar</span></h1>
+      <h1>A lembrancinha que</p> todo mundo vai</p> <span class="grad">querer levar</span></h1>
       <p class="hero-sub">Kits de lembrancinhas 3D personalizadas para festas infantis. Chaveiros, brinquedos articulados, plaquinhas e forminhas de massinha.</p>
       <div class="hero-min">📦 Pedido mínimo: 10 unidades por kit</div>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="fc fc1"><span class="em">🔑</span><span class="cl">Chaveiro personalizado</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--purple)"></div></div>
-      <div class="fc fc2"><span class="em">🦕</span><span class="cl">Dino articulado</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--pink)"></div></div>
-      <div class="fc fc3"><span class="em">🎨</span><span class="cl">Plaquinha para colorir</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--mint)"></div></div>
-      <div class="fc fc4"><span class="em">🌸</span><span class="cl">Forminha massinha</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--yellow)"></div></div>
     </div>
   </div>
 
@@ -278,7 +291,7 @@ h1{
   <p class="section-sub">Clique em uma categoria para ver todos os modelos disponíveis com valores já definidos.</p>
   <div class="cat-grid">
     <div class="cat-card">
-      <div class="cat-img bg-v">🔑</div>
+      <div class="mcard-img bg-v"><img src="Images/chaveiro-dino.png" alt="Chaveiro Dinossauro" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="cat-body">
         <div class="cat-label" style="color:var(--purple)">Chaveiros</div>
         <div class="cat-name">Chaveiro personalizado</div>
@@ -291,7 +304,7 @@ h1{
       <div class="card-pbar" style="background:var(--purple)"></div>
     </div>
     <div class="cat-card">
-      <div class="cat-img bg-p">🦕</div>
+      <div class="mcard-img bg-v"><img src="Images/articulado-dragao.png" alt="Chaveiro Dinossauro" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="cat-body">
         <div class="cat-label" style="color:var(--pink)">Brinquedos articulados</div>
         <div class="cat-name">Mini brinquedo articulado</div>
@@ -304,7 +317,7 @@ h1{
       <div class="card-pbar" style="background:var(--pink)"></div>
     </div>
     <div class="cat-card">
-      <div class="cat-img bg-m">🎨</div>
+      <div class="mcard-img bg-v"><img src="Images/plaquinha-unicornio.png" alt="Chaveiro Dinossauro" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="cat-body">
         <div class="cat-label" style="color:var(--mint)">Plaquinhas para colorir</div>
         <div class="cat-name">Plaquinha para colorir</div>
@@ -317,7 +330,7 @@ h1{
       <div class="card-pbar" style="background:var(--mint)"></div>
     </div>
     <div class="cat-card">
-      <div class="cat-img bg-y">🌸</div>
+      <div class="mcard-img bg-v"><img src="Images/molde-princesa.png" alt="Chaveiro Dinossauro" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="cat-body">
         <div class="cat-label" style="color:#B8900A">Forminhas para massinha</div>
         <div class="cat-name">Forminha para massinha</div>
@@ -362,5 +375,6 @@ h1{
   <strong>FilaFavo</strong> · Lembrancinhas em impressão 3D · Santo André, SP<br>
   <span style="margin-top:4px;display:inline-block">Feito com 💜 e muito filamento</span>
 </footer>
+</div><!-- /page-wrap -->
 </body>
 </html>
