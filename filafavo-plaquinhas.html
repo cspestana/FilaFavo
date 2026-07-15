@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plaquinhas para colorir · FilaFavo · FilaFavo</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* BASE CSS - shared across all pages */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F8F8FC;--dark:#0D0D14;
+  --purple:#7C3AED;--pink:#F72585;
+  --mint:#00C896;--yellow:#FFD60A;
+  --orange:#FF6B35;--white:#fff;
+  --muted:#6B6B84;--border:#E8E8F0;
+  --r:16px;
+  --fd:'Space Grotesk',sans-serif;
+  --fb:'Inter',sans-serif;
+}
+body{font-family:var(--fb);background:var(--bg);color:var(--dark);line-height:1.6;overflow-x:hidden;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,248,252,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:var(--fd);font-weight:800;font-size:1.2rem;color:var(--dark);letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none;}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.nav-cta{background:var(--dark);color:#fff;font-family:var(--fd);font-weight:600;font-size:.875rem;padding:10px 22px;border-radius:100px;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.nav-cta:hover{background:var(--purple);}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-weight:600;font-size:.875rem;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:100px;border:1.5px solid var(--border);background:white;transition:all .2s;}
+.back-btn:hover{border-color:var(--purple);color:var(--purple);}
+.grad{background:linear-gradient(130deg,var(--purple) 0%,var(--pink) 55%,#FF7C00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section{padding:3rem 2rem;max-width:1100px;margin:0 auto;}
+.eyebrow{display:inline-block;font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:.75rem;}
+.section-title{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem;}
+.section-sub{color:var(--muted);font-size:1rem;max-width:480px;margin-bottom:2.5rem;}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#25D366;color:white;font-family:var(--fd);font-size:.85rem;font-weight:700;padding:11px 16px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:background .2s;width:100%;}
+.btn-wa:hover{background:#1EAF57;}
+.btn-wa-big{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;font-family:var(--fd);font-weight:700;font-size:1.05rem;padding:16px 36px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 4px 28px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;position:relative;z-index:1;}
+.btn-wa-big:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(37,211,102,.5);}
+.tema-banner{background:linear-gradient(135deg,#F3EEFF 0%,#FFE8F4 100%);border:1.5px dashed rgba(124,58,237,.3);border-radius:var(--r);padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:1.5rem;flex-wrap:wrap;}
+.tema-left{flex:1;min-width:260px;}
+.tema-emoji{font-size:2.5rem;margin-bottom:.75rem;display:block;}
+.tema-title{font-family:var(--fd);font-weight:800;font-size:1.3rem;margin-bottom:.4rem;}
+.tema-sub{font-size:.9rem;color:var(--muted);max-width:380px;}
+.btn-tema{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;font-family:var(--fd);font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;white-space:nowrap;box-shadow:0 4px 20px rgba(124,58,237,.3);transition:transform .2s;}
+.btn-tema:hover{transform:translateY(-2px);}
+.cta-wrap{padding:0 2rem;max-width:1100px;margin:2rem auto 5rem;}
+.cta-box{background:linear-gradient(135deg,var(--dark) 0%,#1A0836 100%);border-radius:24px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.cta-box::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:rgba(124,58,237,.22);filter:blur(70px);}
+.cta-box::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(247,37,133,.18);filter:blur(60px);}
+.cta-box h2{font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:white;letter-spacing:-.02em;margin-bottom:.75rem;position:relative;z-index:1;}
+.cta-box p{color:rgba(255,255,255,.55);font-size:1rem;margin-bottom:2rem;position:relative;z-index:1;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.83rem;}
+footer strong{color:var(--dark);font-family:var(--fd);font-weight:700;}
+.bg-v{background:rgba(124,58,237,.07);}
+.bg-p{background:rgba(247,37,133,.07);}
+.bg-m{background:rgba(0,200,150,.08);}
+.bg-y{background:rgba(255,214,10,.12);}
+
+
+.page-header{padding:3rem 2rem 2rem;max-width:1100px;margin:0 auto;display:flex;align-items:flex-start;gap:2rem;}
+.page-header-icon{font-size:4rem;line-height:1;flex-shrink:0;}
+.page-header-text{}
+.page-header h1{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:.5rem;}
+.page-header p{color:var(--muted);font-size:1rem;max-width:500px;}
+.kit-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:100px;padding:5px 14px;font-size:.8rem;font-weight:600;color:var(--purple);margin-top:.75rem;}
+.models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.mcard{background:white;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;display:flex;flex-direction:column;}
+.mcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.09);}
+.mcard-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;}
+.mcard-body{padding:1.5rem;display:flex;flex-direction:column;flex:1;}
+.mcat{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
+.mname{font-family:var(--fd);font-weight:800;font-size:1.1rem;margin-bottom:.4rem;letter-spacing:-.01em;}
+.mdesc{font-size:.87rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.55;flex:1;}
+.price-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.price-block{}
+.price-label{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+.price-value{font-family:var(--fd);font-weight:800;font-size:1.6rem;line-height:1.1;letter-spacing:-.02em;}
+.price-unit{font-family:var(--fd);font-size:.75rem;font-weight:500;color:var(--muted);}
+.btn-wa-card{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:white;font-family:var(--fd);font-size:.85rem;font-weight:700;padding:11px 20px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.btn-wa-card:hover{background:#1EAF57;}
+.card-pbar{position:absolute;bottom:0;left:0;height:3px;width:0%;transition:width .7s ease;}
+.mcard:hover .card-pbar{width:100%;}
+@media(max-width:700px){.models-grid{grid-template-columns:1fr;}.page-header{flex-direction:column;gap:1rem;}.cta-box{padding:2.5rem 1.5rem;}.tema-banner{flex-direction:column;text-align:center;}}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="filafavo.html" class="logo"><span class="logo-mark">🎀</span>FilaFavo</a>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <a href="filafavo.html" class="back-btn">← Voltar</a>
+    <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20encomendar%20lembrancinhas%20de%20Plaquinhas%20🎉" class="nav-cta" target="_blank">💬 Fazer pedido</a>
+  </div>
+</nav>
+<div class="page-header">
+  <span class="page-header-icon">🎨</span>
+  <div class="page-header-text">
+    <div class="eyebrow">Plaquinhas para colorir</div>
+    <h1>Modelos de plaquinha para colorir</h1>
+    <p>Atividade + lembrança em um só produto. As crianças pintam na festa e levam pra casa.</p>
+    <div class="kit-badge">📦 Pedido mínimo: 10 unidades por kit</div>
+  </div>
+</div>
+<div class="section" style="padding-top:1rem">
+  <div class="models-grid">
+    <div class="mcard">
+      <div class="mcard-img bg-m"><span style="font-size:5rem">🦄</span></div>
+      <div class="mcard-body">
+        <div class="mcat" style="color:var(--mint)">Plaquinhas para colorir</div>
+        <div class="mname">Plaquinha Unicórnio</div>
+        <div class="mdesc">Moldura em formato de unicórnio com espaço para colorir. Perfeita para festas mágicas e encantadas.</div>
+        <div class="price-row">
+          <div class="price-block">
+            <div class="price-label">Kit 10 unidades</div>
+            <div class="price-value" style="color:var(--mint)">R$ 79,90</div>
+            <div class="price-unit">por kit · cada unidade sai a R$ 7,99</div>
+          </div>
+          <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20encomendar%20o%20Kit%20Plaquinha%20Unicórnio%20para%20Colorir%20(mín.%2010%20unidades)%20🎉" class="btn-wa-card" target="_blank">💬 Pedir este modelo</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--mint)"></div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-img bg-m"><span style="font-size:5rem">🦕</span></div>
+      <div class="mcard-body">
+        <div class="mcat" style="color:var(--mint)">Plaquinhas para colorir</div>
+        <div class="mname">Plaquinha Dinossauro</div>
+        <div class="mdesc">Moldura com dinossauro em relevo para as crianças pintarem. Sucesso nas festas temáticas!</div>
+        <div class="price-row">
+          <div class="price-block">
+            <div class="price-label">Kit 10 unidades</div>
+            <div class="price-value" style="color:var(--mint)">R$ 79,90</div>
+            <div class="price-unit">por kit · cada unidade sai a R$ 7,99</div>
+          </div>
+          <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20encomendar%20o%20Kit%20Plaquinha%20Dinossauro%20para%20Colorir%20(mín.%2010%20unidades)%20🎉" class="btn-wa-card" target="_blank">💬 Pedir este modelo</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--mint)"></div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-img bg-m"><span style="font-size:5rem">💜</span></div>
+      <div class="mcard-body">
+        <div class="mcat" style="color:var(--mint)">Plaquinhas para colorir</div>
+        <div class="mname">Plaquinha Coração com Nome</div>
+        <div class="mdesc">Formato coração com o nome da criança gravado em relevo. Lembrança personalizada e especial.</div>
+        <div class="price-row">
+          <div class="price-block">
+            <div class="price-label">Kit 10 unidades</div>
+            <div class="price-value" style="color:var(--mint)">R$ 84,90</div>
+            <div class="price-unit">por kit · cada unidade sai a R$ 8,49</div>
+          </div>
+          <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20encomendar%20o%20Kit%20Plaquinha%20Coração%20para%20Colorir%20(mín.%2010%20unidades)%20🎉" class="btn-wa-card" target="_blank">💬 Pedir este modelo</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--mint)"></div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-img bg-m"><span style="font-size:5rem">🌟</span></div>
+      <div class="mcard-body">
+        <div class="mcat" style="color:var(--mint)">Plaquinhas para colorir</div>
+        <div class="mname">Plaquinha Estrela</div>
+        <div class="mdesc">Estrela com detalhes para colorir e o nome do evento. Versátil e linda em qualquer tema.</div>
+        <div class="price-row">
+          <div class="price-block">
+            <div class="price-label">Kit 10 unidades</div>
+            <div class="price-value" style="color:var(--mint)">R$ 74,90</div>
+            <div class="price-unit">por kit · cada unidade sai a R$ 7,49</div>
+          </div>
+          <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20encomendar%20o%20Kit%20Plaquinha%20Estrela%20para%20Colorir%20(mín.%2010%20unidades)%20🎉" class="btn-wa-card" target="_blank">💬 Pedir este modelo</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--mint)"></div>
+    </div></div>
+  <div class="tema-banner" style="margin-top:2rem">
+    <div class="tema-left">
+      <span class="tema-emoji">✨</span>
+      <div class="tema-title">Quer um tema diferente?</div>
+      <p class="tema-sub">Não encontrou o modelo certo? A gente pode criar algo exclusivo. Entre em contato para verificar disponibilidade e prazo.</p>
+    </div>
+    <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20um%20modelo%20de%20Plaquinhas%20exclusivo%20✨" class="btn-tema" target="_blank">💬 Consultar disponibilidade</a>
+  </div>
+</div>
+<footer>
+  <strong>FilaFavo</strong> · Lembrancinhas em impressão 3D · Santo André, SP<br>
+  <span style="margin-top:4px;display:inline-block">Feito com 💜 e muito filamento</span>
+</footer>
+</body>
+</html>

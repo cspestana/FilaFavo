@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FilaFavo · Lembrancinhas 3D para Festas Infantis · FilaFavo</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* BASE CSS - shared across all pages */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F8F8FC;--dark:#0D0D14;
+  --purple:#7C3AED;--pink:#F72585;
+  --mint:#00C896;--yellow:#FFD60A;
+  --orange:#FF6B35;--white:#fff;
+  --muted:#6B6B84;--border:#E8E8F0;
+  --r:16px;
+  --fd:'Space Grotesk',sans-serif;
+  --fb:'Inter',sans-serif;
+}
+body{font-family:var(--fb);background:var(--bg);color:var(--dark);line-height:1.6;overflow-x:hidden;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,248,252,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:var(--fd);font-weight:800;font-size:1.2rem;color:var(--dark);letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none;}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.nav-cta{background:var(--dark);color:#fff;font-family:var(--fd);font-weight:600;font-size:.875rem;padding:10px 22px;border-radius:100px;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.nav-cta:hover{background:var(--purple);}
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-weight:600;font-size:.875rem;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:100px;border:1.5px solid var(--border);background:white;transition:all .2s;}
+.back-btn:hover{border-color:var(--purple);color:var(--purple);}
+.grad{background:linear-gradient(130deg,var(--purple) 0%,var(--pink) 55%,#FF7C00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section{padding:3rem 2rem;max-width:1100px;margin:0 auto;}
+.eyebrow{display:inline-block;font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:.75rem;}
+.section-title{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem;}
+.section-sub{color:var(--muted);font-size:1rem;max-width:480px;margin-bottom:2.5rem;}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#25D366;color:white;font-family:var(--fd);font-size:.85rem;font-weight:700;padding:11px 16px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:background .2s;width:100%;}
+.btn-wa:hover{background:#1EAF57;}
+.btn-wa-big{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;font-family:var(--fd);font-weight:700;font-size:1.05rem;padding:16px 36px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 4px 28px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;position:relative;z-index:1;}
+.btn-wa-big:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(37,211,102,.5);}
+.tema-banner{background:linear-gradient(135deg,#F3EEFF 0%,#FFE8F4 100%);border:1.5px dashed rgba(124,58,237,.3);border-radius:var(--r);padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:1.5rem;flex-wrap:wrap;}
+.tema-left{flex:1;min-width:260px;}
+.tema-emoji{font-size:2.5rem;margin-bottom:.75rem;display:block;}
+.tema-title{font-family:var(--fd);font-weight:800;font-size:1.3rem;margin-bottom:.4rem;}
+.tema-sub{font-size:.9rem;color:var(--muted);max-width:380px;}
+.btn-tema{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;font-family:var(--fd);font-weight:700;font-size:.95rem;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;white-space:nowrap;box-shadow:0 4px 20px rgba(124,58,237,.3);transition:transform .2s;}
+.btn-tema:hover{transform:translateY(-2px);}
+.cta-wrap{padding:0 2rem;max-width:1100px;margin:2rem auto 5rem;}
+.cta-box{background:linear-gradient(135deg,var(--dark) 0%,#1A0836 100%);border-radius:24px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.cta-box::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:rgba(124,58,237,.22);filter:blur(70px);}
+.cta-box::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(247,37,133,.18);filter:blur(60px);}
+.cta-box h2{font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:white;letter-spacing:-.02em;margin-bottom:.75rem;position:relative;z-index:1;}
+.cta-box p{color:rgba(255,255,255,.55);font-size:1rem;margin-bottom:2rem;position:relative;z-index:1;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.83rem;}
+footer strong{color:var(--dark);font-family:var(--fd);font-weight:700;}
+.bg-v{background:rgba(124,58,237,.07);}
+.bg-p{background:rgba(247,37,133,.07);}
+.bg-m{background:rgba(0,200,150,.08);}
+.bg-y{background:rgba(255,214,10,.12);}
+
+
+/* HERO */
+.hero{padding:5rem 2rem 3rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.78rem;font-weight:500;color:var(--muted);margin-bottom:1.5rem;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--mint);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+h1{font-family:var(--fd);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.25rem;}
+.hero-sub{font-size:1.05rem;color:var(--muted);margin-bottom:1rem;max-width:420px;}
+.hero-min{display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:100px;padding:6px 14px;font-size:.82rem;font-weight:600;color:var(--purple);margin-bottom:2rem;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;font-family:var(--fd);font-weight:700;font-size:1rem;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.35);transition:transform .2s,box-shadow .2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.45);}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--dark);font-family:var(--fd);font-weight:600;font-size:1rem;padding:14px 24px;border-radius:100px;border:1.5px solid var(--border);cursor:pointer;text-decoration:none;transition:border-color .2s;}
+.btn-ghost:hover{border-color:var(--purple);}
+/* HERO VISUAL */
+.hero-visual{position:relative;height:380px;}
+.fc{position:absolute;background:white;border-radius:var(--r);padding:1.1rem;border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.08);display:flex;flex-direction:column;align-items:center;gap:6px;width:128px;cursor:default;overflow:hidden;}
+.fc .em{font-size:2.2rem;}
+.fc .cl{font-family:var(--fd);font-weight:600;font-size:.74rem;text-align:center;color:var(--dark);line-height:1.3;}
+.fc .kt{font-size:.65rem;font-weight:600;background:rgba(0,0,0,.05);border-radius:100px;padding:2px 8px;color:var(--muted);}
+.pbar{position:absolute;bottom:0;left:0;height:3px;width:0%;transition:width .6s ease;}
+.fc:hover .pbar{width:100%;}
+.fc1{top:0;left:5%;transform:rotate(-5deg);}
+.fc2{top:15px;right:0%;transform:rotate(4deg);width:135px;}
+.fc3{top:170px;left:-2%;transform:rotate(2.5deg);}
+.fc4{top:185px;right:10%;transform:rotate(-3.5deg);}
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+.step{background:white;border-radius:var(--r);padding:1.5rem;border:1px solid var(--border);position:relative;overflow:hidden;}
+.step-n{font-family:var(--fd);font-size:2.8rem;font-weight:800;color:var(--border);line-height:1;margin-bottom:.75rem;}
+.step-icon{font-size:1.5rem;margin-bottom:.5rem;display:block;}
+.step h3{font-family:var(--fd);font-weight:700;font-size:.95rem;margin-bottom:.35rem;}
+.step p{font-size:.83rem;color:var(--muted);line-height:1.55;}
+.step::after{content:'';position:absolute;top:0;left:0;width:4px;height:100%;}
+.s1::after{background:var(--purple);}
+.s2::after{background:var(--pink);}
+.s3::after{background:var(--mint);}
+.s4::after{background:var(--yellow);}
+/* CATEGORY CARDS */
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.cat-card{background:white;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
+.cat-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.09);}
+.cat-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:5rem;}
+.cat-body{padding:1.5rem;}
+.cat-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+.cat-name{font-family:var(--fd);font-weight:800;font-size:1.25rem;margin-bottom:.35rem;letter-spacing:-.01em;}
+.cat-desc{font-size:.88rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.55;}
+.cat-footer{display:flex;align-items:center;justify-content:space-between;}
+.cat-info{font-family:var(--fd);font-size:.78rem;font-weight:600;color:var(--muted);}
+.btn-ver{display:inline-flex;align-items:center;gap:6px;background:var(--dark);color:white;font-family:var(--fd);font-size:.85rem;font-weight:700;padding:10px 20px;border-radius:100px;text-decoration:none;transition:background .2s;}
+.btn-ver:hover{background:var(--purple);}
+.card-pbar{position:absolute;bottom:0;left:0;height:3px;width:0%;transition:width .7s ease;}
+.cat-card:hover .card-pbar{width:100%;}
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.rcard{background:white;border-radius:var(--r);padding:1.5rem;border:1px solid var(--border);}
+.stars{color:var(--yellow);font-size:.9rem;margin-bottom:.6rem;letter-spacing:2px;}
+.rtext{font-size:.88rem;line-height:1.65;margin-bottom:1rem;}
+.reviewer{display:flex;align-items:center;gap:10px;}
+.rav{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;flex-shrink:0;}
+.rname{font-family:var(--fd);font-weight:600;font-size:.83rem;}
+.rsub{font-size:.72rem;color:var(--muted);}
+@media(max-width:900px){.hero{grid-template-columns:1fr;}.hero-visual{display:none;}.steps{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.steps{grid-template-columns:1fr;}.reviews-grid{grid-template-columns:1fr;}.cat-grid{grid-template-columns:1fr;}.cta-box{padding:2.5rem 1.5rem;}.tema-banner{flex-direction:column;text-align:center;}}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo"><span class="logo-mark">🎀</span>FilaFavo</a>
+  <a href="https://wa.me/5511999999999?text=Oi!%20Vi%20o%20FilaFavo%20e%20quero%20fazer%20um%20pedido%20🎉" class="nav-cta" target="_blank">💬 Pedir pelo WhatsApp</a>
+</nav>
+<div class="hero">
+  <div>
+    <div class="hero-badge"><span class="badge-dot"></span>Lembrancinhas únicas · Impressão 3D</div>
+    <h1>A lembrancinha que todo mundo vai <span class="grad">querer levar</span></h1>
+    <p class="hero-sub">Kits de lembrancinhas 3D personalizadas para festas infantis. Chaveiros, brinquedos articulados, plaquinhas e forminhas de massinha.</p>
+    <div class="hero-min">📦 Pedido mínimo: 10 unidades por kit</div>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn-primary">🎁 Ver catálogo</a>
+      <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20um%20orçamento%20para%20lembrancinhas%20🎉" class="btn-ghost" target="_blank">💬 Pedir orçamento</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="fc fc1"><span class="em">🔑</span><span class="cl">Chaveiro personalizado</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--purple)"></div></div>
+    <div class="fc fc2"><span class="em">🦕</span><span class="cl">Dino articulado</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--pink)"></div></div>
+    <div class="fc fc3"><span class="em">🎨</span><span class="cl">Plaquinha para colorir</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--mint)"></div></div>
+    <div class="fc fc4"><span class="em">🌸</span><span class="cl">Forminha massinha</span><span class="kt">Kit 10un</span><div class="pbar" style="background:var(--yellow)"></div></div>
+  </div>
+</div>
+
+<section class="section">
+  <span class="eyebrow">Como funciona</span>
+  <h2 class="section-title">Do pedido à festa em 4 passos</h2>
+  <p class="section-sub">Sem complicação. Você escolhe, a gente imprime e entrega.</p>
+  <div class="steps">
+    <div class="step s1"><div class="step-n">01</div><span class="step-icon">🎯</span><h3>Escolha o produto</h3><p>Navegue pelo catálogo e escolha qual lembrancinha combina com a sua festa.</p></div>
+    <div class="step s2"><div class="step-n">02</div><span class="step-icon">💬</span><h3>Mande mensagem</h3><p>Fale pelo WhatsApp com tema, cor e quantidade (mín. 10 unidades).</p></div>
+    <div class="step s3"><div class="step-n">03</div><span class="step-icon">🖨️</span><h3>A gente imprime</h3><p>Cada peça é produzida em impressão 3D com filamento de qualidade.</p></div>
+    <div class="step s4"><div class="step-n">04</div><span class="step-icon">🎉</span><h3>Receba e arrase</h3><p>Entregamos no prazo. Pagamento por Pix, link Nu Empresas ou WhatsApp Pay.</p></div>
+  </div>
+</section>
+
+<section class="section" id="catalogo">
+  <span class="eyebrow">Catálogo</span>
+  <h2 class="section-title">Escolha sua lembrancinha</h2>
+  <p class="section-sub">Clique em uma categoria para ver todos os modelos disponíveis com valores já definidos.</p>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-img bg-v">🔑</div>
+      <div class="cat-body">
+        <div class="cat-label" style="color:var(--purple)">Chaveiros</div>
+        <div class="cat-name">Chaveiro personalizado</div>
+        <div class="cat-desc">Chaveiros 3D com nome, tema ou formato livre. Leves, coloridos e que as crianças adoram.</div>
+        <div class="cat-footer">
+          <div class="cat-info">📦 Kit mínimo 10 unidades</div>
+          <a href="filafavo-chaveiros.html" class="btn-ver">Ver modelos →</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--purple)"></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img bg-p">🦕</div>
+      <div class="cat-body">
+        <div class="cat-label" style="color:var(--pink)">Brinquedos articulados</div>
+        <div class="cat-name">Mini brinquedo articulado</div>
+        <div class="cat-desc">Dinos, dragões e bichos articulados em 3D. A criança leva pra casa e não larga mais!</div>
+        <div class="cat-footer">
+          <div class="cat-info">📦 Kit mínimo 10 unidades</div>
+          <a href="filafavo-brinquedos.html" class="btn-ver">Ver modelos →</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--pink)"></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img bg-m">🎨</div>
+      <div class="cat-body">
+        <div class="cat-label" style="color:var(--mint)">Plaquinhas para colorir</div>
+        <div class="cat-name">Plaquinha para colorir</div>
+        <div class="cat-desc">As crianças pintam na festa e levam pra casa como lembrança. Atividade e presente em um!</div>
+        <div class="cat-footer">
+          <div class="cat-info">📦 Kit mínimo 10 unidades</div>
+          <a href="filafavo-plaquinhas.html" class="btn-ver">Ver modelos →</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--mint)"></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img bg-y">🌸</div>
+      <div class="cat-body">
+        <div class="cat-label" style="color:#B8900A">Forminhas para massinha</div>
+        <div class="cat-name">Forminha para massinha</div>
+        <div class="cat-desc">Forminhas temáticas que viram brinquedo depois da festa. Flores, animais e muito mais.</div>
+        <div class="cat-footer">
+          <div class="cat-info">📦 Kit mínimo 10 unidades</div>
+          <a href="filafavo-forminhas.html" class="btn-ver">Ver modelos →</a>
+        </div>
+      </div>
+      <div class="card-pbar" style="background:var(--yellow)"></div>
+    </div>
+  </div>
+
+  <div class="tema-banner">
+    <div class="tema-left">
+      <span class="tema-emoji">✨</span>
+      <div class="tema-title">Não encontrou o tema que procura?</div>
+      <p class="tema-sub">Tem um tema especial em mente? Manda mensagem — a gente verifica a disponibilidade e cria algo exclusivo pra você.</p>
+    </div>
+    <a href="https://wa.me/5511999999999?text=Oi!%20Quero%20uma%20lembrancinha%20com%20tema%20especial%20✨%20Pode%20me%20ajudar?" class="btn-tema" target="_blank">💬 Consultar disponibilidade</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Avaliações</span>
+  <h2 class="section-title">Quem já pediu, amou 💜</h2>
+  <div class="reviews-grid">
+    <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"Os dinos articulados foram o maior sucesso! As crianças levaram pra casa e ficaram brincando a tarde toda. Todo mundo perguntou onde eu comprei."</p><div class="reviewer"><div class="rav" style="background:var(--purple);font-size:1rem">A</div><div><div class="rname">Ana Beatriz</div><div class="rsub">Kit Dino · 25 unidades</div></div></div></div>
+    <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"As plaquinhas para colorir foram um sucesso total! As crianças ficaram entretidas pintando durante toda a festinha. Super recomendo!"</p><div class="reviewer"><div class="rav" style="background:var(--pink);font-size:1rem">J</div><div><div class="rname">Juliana Melo</div><div class="rsub">Kit Plaquinha · 20 unidades</div></div></div></div>
+    <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"Os chaveiros com o nome de cada criança foram uma fofura! Atendimento rápido, qualidade incrível e chegou antes do prazo. Com certeza vou pedir de novo."</p><div class="reviewer"><div class="rav" style="background:var(--mint);font-size:1rem">F</div><div><div class="rname">Fernanda Costa</div><div class="rsub">Kit Chaveiro · 30 unidades</div></div></div></div>
+  </div>
+</section>
+
+<div class="cta-wrap">
+  <div class="cta-box">
+    <h2>Sua festa começa<br><span class="grad">aqui</span> 🎉</h2>
+    <p>Mande uma mensagem agora e receba seu orçamento em minutos.</p>
+    <a href="https://wa.me/5511999999999?text=Oi!%20Vi%20o%20FilaFavo%20e%20quero%20fazer%20um%20pedido%20🎉" class="btn-wa-big" target="_blank">💬 Chamar no WhatsApp</a>
+  </div>
+</div>
+<footer>
+  <strong>FilaFavo</strong> · Lembrancinhas em impressão 3D · Santo André, SP<br>
+  <span style="margin-top:4px;display:inline-block">Feito com 💜 e muito filamento</span>
+</footer>
+</body>
+</html>
